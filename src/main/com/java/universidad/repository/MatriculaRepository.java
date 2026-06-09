@@ -1,8 +1,12 @@
 package universidad.repository;
 
-import universidad.entity.Matricula;
 import org.springframework.data.jpa.repository.JpaRepository;
+import universidad.entity.Matricula;
 
 public interface MatriculaRepository
-        extends JpaRepository<Matricula,Integer> {
+        extends JpaRepository<Matricula, Integer> {
+
+    boolean existsByEstudianteIdAndCursoCodigo(
+            String estudianteId,
+            String cursoCodigo);
 }

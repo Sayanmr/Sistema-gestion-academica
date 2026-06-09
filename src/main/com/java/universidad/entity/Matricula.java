@@ -15,12 +15,13 @@ public class Matricula {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_estudiantes")
+    @JoinColumn(name = "id_estudiante")
     private Estudiante estudiante;
 
     @ManyToOne
-    @JoinColumn(name = "codigo_cursos")
+    @JoinColumn(name = "codigo_curso")
     private Curso curso;
 
+    @Column(name = "fecha_matricula")
     private LocalDateTime fechaMatricula;
 }

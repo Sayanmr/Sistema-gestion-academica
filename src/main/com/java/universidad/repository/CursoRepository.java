@@ -1,8 +1,8 @@
 package universidad.repository;
 
-import universidad.entity.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
+import universidad.entity.Curso;
 
 public interface CursoRepository
-        extends JpaRepository<Curso,String> {
+        extends JpaRepository<Curso, String> {
 }
