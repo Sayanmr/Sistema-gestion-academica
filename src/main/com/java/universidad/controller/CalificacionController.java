@@ -4,6 +4,7 @@ import universidad.dto.CalificacionRequest;
 import universidad.entity.Calificacion;
 import universidad.service.CalificacionService;
 import org.springframework.web.bind.annotation.*;
+import universidad.dto.CalificacionDetalleDTO;
 
 import java.util.List;
 
@@ -49,5 +50,10 @@ public class CalificacionController {
             @PathVariable Integer id) {
 
         service.eliminar(id);
+    }
+    @GetMapping("/detalle")
+    public List<CalificacionDetalleDTO> detalle() {
+
+        return service.detalle();
     }
 }

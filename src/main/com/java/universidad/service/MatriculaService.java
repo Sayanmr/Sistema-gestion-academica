@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import universidad.dto.MatriculaDetalleDTO;
+
 @Service
 public class MatriculaService {
 
@@ -62,4 +64,17 @@ public class MatriculaService {
     public void eliminar(Integer id) {
         matriculaRepository.deleteById(id);
     }
+
+    public List<MatriculaDetalleDTO> detalle() {
+
+        return matriculaRepository.obtenerDetalle();
+    }
+
+    public List<Curso> cursosDeEstudiante(
+            String idEstudiante) {
+
+        return matriculaRepository
+                .cursosDeEstudiante(idEstudiante);
+    }
+
 }

@@ -4,6 +4,7 @@ import universidad.dto.MatriculaDTO;
 import universidad.entity.Matricula;
 import universidad.service.MatriculaService;
 import org.springframework.web.bind.annotation.*;
+import universidad.dto.MatriculaDetalleDTO;
 
 import java.util.List;
 
@@ -34,5 +35,10 @@ public class MatriculaController {
             @PathVariable Integer id) {
 
         service.eliminar(id);
+    }
+    @GetMapping("/detalle")
+    public List<MatriculaDetalleDTO> detalle() {
+
+        return service.detalle();
     }
 }

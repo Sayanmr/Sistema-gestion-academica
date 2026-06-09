@@ -8,6 +8,7 @@ import universidad.repository.CalificacionRepository;
 import universidad.repository.CursoRepository;
 import universidad.repository.EstudianteRepository;
 import org.springframework.stereotype.Service;
+import universidad.dto.CalificacionDetalleDTO;
 
 import java.util.List;
 
@@ -72,5 +73,17 @@ public class CalificacionService {
 
     public void eliminar(Integer id) {
         repository.deleteById(id);
+    }
+    public List<CalificacionDetalleDTO> detalle() {
+
+        return repository.obtenerDetalle();
+    }
+
+    public Double promedioEstudiante(String idEstudiante) {
+
+        Double promedio =
+                repository.promedioEstudiante(idEstudiante);
+
+        return promedio == null ? 0.0 : promedio;
     }
 }
