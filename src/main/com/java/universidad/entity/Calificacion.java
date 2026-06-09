@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "calificaciones")
 public class Calificacion {
 
     @Id
@@ -12,11 +13,11 @@ public class Calificacion {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_estudiante")
+    @JoinColumn(name = "id_estudiantes")
     private Estudiante estudiante;
 
     @ManyToOne
-    @JoinColumn(name = "codigo_curso")
+    @JoinColumn(name = "codigo_cursos")
     private Curso curso;
 
     private Double nota;

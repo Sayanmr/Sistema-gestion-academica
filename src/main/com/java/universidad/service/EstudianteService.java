@@ -26,4 +26,11 @@ public class EstudianteService {
     public void eliminar(String id) {
         repository.deleteById(id);
     }
+
+    public Estudiante buscarPorId(String id) {
+        return repository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Estudiante no encontrado"));
+    }
 }
+
