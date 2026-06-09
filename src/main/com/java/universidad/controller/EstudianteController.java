@@ -1,7 +1,8 @@
 package universidad.controller;
 
-import universidad.entity.Estudiante;
+import universidad.dto.EstudianteDTO;
 import universidad.service.EstudianteService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,36 +13,36 @@ public class EstudianteController {
 
     private final EstudianteService service;
 
-    public EstudianteController(EstudianteService service) {
+    public EstudianteController(
+            EstudianteService service) {
+
         this.service = service;
     }
 
     @GetMapping
-    public List<Estudiante> listar() {
+    public List<EstudianteDTO> listar() {
+
         return service.listar();
     }
 
     @GetMapping("/{id}")
-    public Estudiante obtenerPorId(@PathVariable String id) {
+    public EstudianteDTO buscarPorId(
+            @PathVariable String id) {
+
         return service.buscarPorId(id);
     }
 
     @PostMapping
-    public Estudiante guardar(@RequestBody Estudiante estudiante) {
-        return service.guardar(estudiante);
+    public EstudianteDTO guardar(
+            @RequestBody EstudianteDTO dto) {
+
+        return service.guardar(dto);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable String id) {
+    public void eliminar(
+            @PathVariable String id) {
+
         service.eliminar(id);
-    }
-
-    @PutMapping("/{id}")
-    public Estudiante actualizar(
-            @PathVariable String id,
-            @RequestBody Estudiante estudiante) {
-
-        estudiante.setId(id);
-        return service.guardar(estudiante);
     }
 }
