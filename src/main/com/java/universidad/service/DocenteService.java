@@ -1,6 +1,7 @@
 package universidad.service;
 
 import universidad.entity.Docente;
+import universidad.exception.DocenteDuplicadoException;
 import universidad.repository.DocenteRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,13 @@ public class DocenteService {
     }
 
     public Docente guardar(Docente docente) {
+
+        if (repository.existsById(docente.getNumEmpleado())) {
+            throw new DocenteDuplicadoException(
+                    "Ya existe un docente con ID "
+                            + docente.getNumEmpleado());
+        }
+
         return repository.save(docente);
     }
 

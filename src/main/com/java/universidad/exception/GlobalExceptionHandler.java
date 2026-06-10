@@ -6,11 +6,25 @@ import org.springframework.web.bind.annotation.*;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(
-            EstudianteDuplicadoException.class)
+    @ExceptionHandler(EstudianteDuplicadoException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String manejarDuplicado(
+    public String manejarEstudianteDuplicado(
             EstudianteDuplicadoException ex) {
+
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler(DocenteDuplicadoException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String manejarDocenteDuplicado(
+            DocenteDuplicadoException ex) {
+
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String manejarNoEncontrado(RuntimeException ex) {
 
         return ex.getMessage();
     }
